@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hyper news</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+{% regroup data by created as news_list %}
+{% for created in news_list %}
+<h4>{{ created.grouper }}</h4>
+<ul>
+    {% for item in created.list %}
+  <li><a href="/news/{{ item.link }}/">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
+<a href="/news/create/">Create news</a>
+</body>
+</html>
